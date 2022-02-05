@@ -31,15 +31,6 @@ namespace MyExtensionMethods
             return (Convert.ToUInt32(self) & Convert.ToUInt32(valueMemberToCheck)) != 0;
         }
 
-        /// <summary>
-        /// Parsea un valor string a un enumerador. Si no existe, devuelve el valor por defecto del enumerador.
-        /// </summary>
-        public static T? ToEnum<T>(this string value) where T : struct
-        {
-            if (string.IsNullOrEmpty(value)) return default(T);
-            return Enum.TryParse(value, true, out T result) ? result : default;
-        }
-
         #region HasDescription
         /// <summary>
         /// Comprueba si un enumerador tiene el atributo Description
@@ -111,6 +102,15 @@ namespace MyExtensionMethods
             }
 
             return null;
+        }
+
+        /// <summary>
+        /// Parsea un valor string a un enumerador. Si no existe, devuelve el valor por defecto del enumerador.
+        /// </summary>
+        public static T? ToEnum<T>(this string value) where T : struct
+        {
+            if (string.IsNullOrEmpty(value)) return default(T);
+            return Enum.TryParse(value, true, out T result) ? result : default;
         }
 
         #region private methods
